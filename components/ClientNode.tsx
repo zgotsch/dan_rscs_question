@@ -1,6 +1,7 @@
 import {Node} from "../lib/types";
 import {NodeInner} from "./NodeInner";
 
+// TODO(zgotsch): fake data fetching library so I can use suspense
 type Wrapped<T> = {unwrap(): T};
 function wrap<T>(p: Promise<T>) {
   let status = "pending";
@@ -43,7 +44,8 @@ function fetchNode(id: string): Wrapped<Node<string>> {
 }
 
 export function ClientNode({id}: {id: string}) {
-  // TODO(zgotsch): @dan I need to fetch through the api here
+  // TODO(zgotsch): @dan I need to fetch through the api here, which means I need to introduce a new
+  // API route
   const node = fetchNode(id).unwrap();
 
   return <NodeInner node={node} />;

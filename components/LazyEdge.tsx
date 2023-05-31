@@ -8,7 +8,11 @@ export function LazyEdge({id}: {id: string}) {
 
   if (isLoaded) {
     // TODO(zgotsch): @dan I can't do this because it's a server component
-    // return <Node id={id} />;
+    // return (
+    //     <Suspense fallback={`Loading node ${id}`}>
+    //     <Node id={id} />
+    //   </Suspense>
+    // );
     return (
       <Suspense fallback={`Loading node ${id}`}>
         <ClientNode id={id} />
